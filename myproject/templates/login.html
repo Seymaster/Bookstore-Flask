@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+   <body>
+      <h2 style = "text-align: center;">Login Form</h2>
+		
+      {% for message in form.username.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+      
+      <form action = "/vreg/login" method = post>
+         <fieldset>
+            <legend>Login</legend>
+            {{ form.hidden_tag() }}
+            
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+               {{ form.username.label }}<br>
+               {{ form.username }}
+               <br>
+        
+               {{ form.password.label }}<br>
+               {{ form.password }}
+               <br>
+               {{ form.submit }}
+            </div>
+            {% if message %}
+            <h1>{{message}}</h1>
+            {% endif %}
+         </fieldset>
+      </form>
+   </body>
+</html>

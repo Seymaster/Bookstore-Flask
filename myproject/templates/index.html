@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if books[0] %}
+        <div span="right">
+            <form action=""	method="GET" >
+                <table class="none" id="close">
+                <tr>
+                <td></td><td></td>
+                <td><big><b>Search Reference:</b></big></td>
+                <td><select name="field" required>
+                    <option value="title">Book Title</option>
+                    <option value="author">Author</option>
+                    <option value="description">Description</option>
+                    <option value="year">Year</option>
+                    <option value="price">Price</option>
+                </select></td>
+                <td><input type="text" name="key" placeholder="Search Task" size="15" /></td>
+                <td><button type="submit">Search</button></td>
+                </tr>
+                </table>
+            </form> 
+        </div>
+    <b><big>Book Store :</big></b>
+        <table border="1px">
+            <tr id="row">
+                <th class="status">Book Title</th>
+                <th class="name">Author</th>
+                <th class="desc">Description</th>
+                <th class="date">Price</th>
+                <th class="pr">Year</th>
+                <th class="qti">Quantity</th>
+                <th class="func1">Remove</th>
+                <th class="func2">Modify</th>
+            </tr>
+        {% for book in books %}
+            <tr class="datas">
+                <td class="title">{{ book["title"]}}</td>			
+                <td class="author">{{ book["author"] }}</td>
+                <td class="desc">{{ book["description"] }}</td>
+                <td class="pr">{{ book["price"] }}</td>
+                <td class="year">{{ book["year"] }}</td>
+                <td class="qti">{{ book["quantity"] }}</td>
+                
+                
+                <td class="func1"><a href="./delete?id={{ book['id'] }}">🗑️</a></td>
+                <td class="func2"><a href="./update?id={{ book['id'] }}">📝</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <div class="danger">
+            <h4>No Book in the List !!</h4>
+        </div>
+    {% endif %}
+    <hr>
+    <form action="/books/index" method="POST">
+        <fieldset>
+            <legend>Please Register your books below:</legend>
+            {{ form.hidden_tag() }}
+            
+            <div>
+                {{ form.title.label }}<br>
+                {{ form.title }}<br><br>
+                {{ form.author.label }}<br>
+                {{ form.author }}<br><br>
+                {{ form.description.label }}<br>
+                {{ form.description }}<br><br>
+                {{ form.price.label }}<br>
+                ${{ form.price }}<br><br>
+                {{ form.year.label }}<br>
+                {{ form.year }}<br><br>
+                {{ form.quantity.label }}<br>
+                {{ form.quantity}}<br><br>
+                {{ form.submit }}
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

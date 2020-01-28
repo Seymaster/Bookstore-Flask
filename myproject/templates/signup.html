@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Voters Registration</title>
+</head>
+<body>
+    <h3>Welcome to your vote Registration page </h3>
+    <form action="/vreg/signup" method="POST">
+    <fieldset>
+        <legend>Please fill the form below:</legend>
+        {{ form.hidden_tag() }}
+        
+        <div>
+            {{ form.firstname.label }}<br>
+            {{ form.firstname }}<br><br>
+            {{ form.lastname.label }}<br>
+            {{ form.lastname }}<br><br>
+            {{ form.gender.label}}<br>
+            {{ form.gender }}<br><br>
+            {{ form.age.label }}<br>
+            {{ form.age }}<br><br>
+            {{ form.username.label }}<br>
+            {{ form.username }}<br><br>
+            {{ form.email.label }}<br>
+            {{ form.email }}<br><br>
+            {{ form.password.label }}<br>
+            {{ form.password }}<br><br>
+        {#    {{ form.c_password.label }}<br>
+            {{ form.c_password }}<br><br> #}
+            {{ form.submit }}
+        </div>
+    </fieldset>
+</form>
+{{ message }}
+
+</body>
+</html>
